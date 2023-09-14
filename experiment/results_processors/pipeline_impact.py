@@ -154,7 +154,7 @@ def perform_analysis(results, scores, toy):
     return outcome
 
 
-def save_analysis(analysis, result_path, toy):
+def save_analysis(analysis, result_path, toy, cache):
     """Saves the outcome of the data pre-processing impact analysis.
 
     Args:
@@ -197,7 +197,8 @@ def save_analysis(analysis, result_path, toy):
     plt.ylabel('Ratio of predictive accuracy change')
     plt.legend()
     plt.xlim(0, max_iteration)
-    plt.ylim(0.8, 1.5)
+    if cache:
+        plt.ylim(0.8, 1.5)
     plt.axvline(x=max_iteration/2, color='#aaaaaa', linestyle='--')
     plt.grid(False)
     plt.tick_params(axis='both', which='both', length=5, color='#aaaaaa')
@@ -231,4 +232,4 @@ def pipeline_impact(toy, cache):
 
     pipeline_algorithm_analysis = perform_algorithm_pipeline_analysis(pipeline_algorithm_results, toy)
 
-    save_analysis(pipeline_algorithm_analysis, result_path, toy)
+    save_analysis(pipeline_algorithm_analysis, result_path, toy, cache)

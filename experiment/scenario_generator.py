@@ -72,9 +72,9 @@ def generate_scenarios(args):
             )
             # Set the runtime and step_pipeline according to wheter
             # it is the toy example or not
-            if args.toy_example:
-                runtime = 10
-                step_pipeline = 5
+            if args.toy_example and args.experiment == "pipeline_impact":
+                runtime = 80
+                step_pipeline = 40
             else:
                 # Set the runtime and step_pipeline according to
                 # wheter it is the preprocessing impact experiment or now

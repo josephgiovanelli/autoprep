@@ -47,7 +47,7 @@ def run_cmd(cmd, current_scenario, result_path, stdout_path, stderr_path, toy):
     open(stderr_path, "w")
     with open(stdout_path, "a") as log_out:
         with open(stderr_path, "a") as log_err:
-            max_time = 50 if toy else 1000
+            max_time = 100 if toy else 1000
             try:
                 process = subprocess.Popen(
                     cmd, shell=True, stdout=log_out, stderr=log_err

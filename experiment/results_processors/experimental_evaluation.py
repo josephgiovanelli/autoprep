@@ -170,7 +170,7 @@ def summarize_winners(winners_map):
     return summary_map
 
 
-def save_summary(summary_map, results_path, plots_path, plot):
+def save_summary(toy, cache, summary_map, results_path, plots_path, plot):
     """Saves and plot the summary about the exhaustive prototypes optimization.
 
     Args:
@@ -255,10 +255,11 @@ def save_summary(summary_map, results_path, plots_path, plot):
             "Percentage of cases for which a prototype\nachieved the best performance",
             labelpad=20.0,
         )
-        plt.yticks(
-            ticks=np.linspace(0, 20, 11),
-            labels=["{}%".format(int(x)) for x in np.linspace(0, 20, 11)],
-        )
+        if cache:
+            plt.yticks(
+                ticks=np.linspace(0, 20, 11),
+                labels=["{}%".format(int(x)) for x in np.linspace(0, 20, 11)],
+            )
         # plt.title('Comparison of the goodness of the prototypes')
         plt.legend()
         # plt.subplots_adjust(left=5, bottom=5, right=5, top=5, wspace=0, hspace=0)
@@ -732,7 +733,7 @@ def exhaustive_prototypes(toy, cache, plot):
     # print(summary)
 
     results_path = create_directory(results_path, "summary")
-    save_summary(summary, results_path, plots_path, plot)
+    save_summary(toy, cache, summary, results_path, plots_path, plot)
 
 
 def custom_vs_exhaustive(toy, cache, plot):

@@ -1827,6 +1827,7 @@ def graph_maker_10x4cv(toy, cache):
     ax.axhline(y=0.05, color="grey", linestyle="--")
     ax.set_xticklabels(ticks_array)
     ax.set_ylabel("Means of the p-values")
+    ax.set_xlabel("Prototypes")
     ax.set_yticks([0.0, 0.05, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_ylim([0, 1])
     fig.tight_layout()
